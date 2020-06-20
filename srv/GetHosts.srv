@@ -1,0 +1,4 @@
+#Service call to get the hostname list from the esp node
+---
+string[] hosts
+string[] macs

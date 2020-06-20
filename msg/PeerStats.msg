@@ -1,0 +1,9 @@
+string host
+string addr
+uint32 xmitDepth
+uint32 seqNum
+uint32 staleInflightCount
+uint32 incompleteCount
+duration lastRTT
+bool offline
+time lastSeen

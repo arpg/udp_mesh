@@ -1,0 +1,5 @@
+#Ping a particular host with a data packet
+string hostname
+string payload
+---
+string response
