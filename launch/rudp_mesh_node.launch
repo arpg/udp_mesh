@@ -4,19 +4,19 @@
     <arg name="mesh_interface" default="wlan0" />
     <arg name="mesh_hostname" default="$(optenv MESH_HOSTNAME)"/>
     <arg name="mesh_heartbeat_interval" default="1.0" />
-    <arg name="topic_list" default="[1|std_msgs/String|high_pri_topic, 
+    <arg name="topic_list" default="[1|std_msgs/String|high_pri_topic,
 				     4|std_msgs/Bool|low_pri_topic,
 				     8|sensor_msgs/CameraInfo|cam_info_topic,
 				     8|sensor_msgs/Image|image_raw]"/>
     <arg name="host_list" default="[strand]"/>
-    
+
     <arg name="topic_prefix" default=""/>
     <arg name="use_broadcast" default="true"/>
-    <arg name="broadcast_frag_max" default="5"/> <!-- max number of fragments to allow for a broadcast xmit --> 
-    
+    <arg name="broadcast_frag_max" default="5"/> <!-- max number of fragments to allow for a broadcast xmit -->
+
     <!-- Base transport interface-->
     <group ns="$(arg mesh_hostname)">
-    <node pkg="udp_mesh" type="rudp_mesh_node.py" name="mesh_node" output="screen">
+    <node pkg="udp_mesh" type="rudp_mesh_node.py" name="mesh_node" output="log">
       <param name="data_port" value="$(arg mesh_data_port)"/>
       <param name="heartbeat_interval" value="$(arg mesh_heartbeat_interval)"/>
       <param name="interface" value="$(arg mesh_interface)"/>
@@ -25,16 +25,16 @@
       <param name="broadcast_frag_max" value="$(arg broadcast_frag_max)"/>
       <param name="host_list" type="yaml" value="$(arg host_list)"/>
       <remap from="status" to="mesh_status"/>
-      
+
     </node>
 
     <!-- Reader / writer to package topics -->
-    <node pkg="udp_mesh" type="ros_mesh_reader.py" name="mesh_reader" output="screen">
+    <node pkg="udp_mesh" type="ros_mesh_reader.py" name="mesh_reader" output="log">
       <param name="topic_prefix" value="$(arg topic_prefix)"/>
       <param name="hostname" value="$(arg mesh_hostname)"/>
     </node>
 
-    <node pkg="udp_mesh" type="ros_mesh_writer.py" name="mesh_writer" output="screen">
+    <node pkg="udp_mesh" type="ros_mesh_writer.py" name="mesh_writer" output="log">
        <!-- Type of yaml needed to pass a list of strings, see: https://answers.ros.org/question/194592/how-to-read-a-vectorstrings-parameter-from-command-line/ -->
        <param name="topic_list" type="yaml" value="$(arg topic_list)"/>
        <param name="topic_prefix" value="$(arg topic_prefix)"/>
