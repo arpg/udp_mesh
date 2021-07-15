@@ -8,7 +8,7 @@
 				     4|std_msgs/Bool|low_pri_topic,
 				     8|sensor_msgs/CameraInfo|cam_info_topic,
 				     8|sensor_msgs/Image|image_raw]"/>
-    <arg name="host_list" default="[strand]"/>
+    <arg name="host_list" default="[]"/>
 
     <arg name="topic_prefix" default=""/>
     <arg name="use_broadcast" default="true"/>
