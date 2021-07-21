@@ -39,8 +39,8 @@ class MeshHost(object):
     
 
 class RUdpSessionManager(object):
-    OFFLINE_TIMEOUT = 4.0 #seconds that can pass without a heartbeat before a peer is marked offline
-    STATUS_INTERVAL = 0.1 #time between stat messages
+    OFFLINE_TIMEOUT = 10.0 #seconds that can pass without a heartbeat before a peer is marked offline
+    STATUS_INTERVAL = 0.5 #time between stat messages
     USE_COMPRESSION = False
     BROADCAST_WINDOWSIZE = 5 #number of broadcast packets that are sent per loop iteration
     
