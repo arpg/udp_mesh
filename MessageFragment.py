@@ -10,13 +10,13 @@ import struct
 import logging
 from errno import EINTR
 
-import StringIO
+from io import StringIO
 import io
 import pdb
 import time
 
 from enum import Enum
-from Queue import Queue
+from queue import Queue
 import base64
 import struct
 from MessageTypes import *
@@ -98,7 +98,7 @@ class MessageFragment(object):
         self.fragTotal = 0
 
         #Pascal strings as the underlying type
-        self.data = struct.pack('<64p16p', hostname, ip)
+        self.data = struct.pack('<64p16p', hostname.encode(), ip.encode())
         
     def getBinary(self):
         #Return the packed binary representation of a fragment

@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 #ROS Mesh adapter
 #the Reader reads from the mesh and produces local ROS messages
 '''
@@ -17,14 +17,14 @@ import sys, logging, socket, os
 from optparse import OptionParser
 
 
-import StringIO
+from io import StringIO
 import io
 import pdb
 from udp_mesh.srv import *
 from udp_mesh.msg import *
 
 from enum import Enum
-from Queue import Queue
+from queue import Queue
 import base64
 from std_msgs.msg import *
 

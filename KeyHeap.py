@@ -4,7 +4,7 @@ PriorityQueue with a key function for messages
 From https://stackoverflow.com/questions/407734/a-generic-priority-queue-for-python
 '''
 
-from Queue import PriorityQueue
+from queue import PriorityQueue
 
 class KeyHeap(PriorityQueue):
     def __init__(self, key, maxsize=0):            

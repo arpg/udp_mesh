@@ -12,7 +12,7 @@ One message at each priority is allowed to be inflight at a time
 from MessageTypes import *
 from MessageFragment import *
 from enum import Enum
-from Queue import Queue
+from queue import Queue
 from KeyHeap import *
 import rospy
 from udp_mesh.msg import *

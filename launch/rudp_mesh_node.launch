@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
     <arg name="mesh_data_port" default="8700" />
-    <arg name="mesh_interface" default="wlan0" />
+    <arg name="mesh_interface" default="tun0" />
     <arg name="mesh_hostname" default="$(optenv MESH_HOSTNAME)"/>
     <arg name="mesh_heartbeat_interval" default="1.0" />
     <arg name="topic_list" default="[1|std_msgs/String|high_pri_topic,

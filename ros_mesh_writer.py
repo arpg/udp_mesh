@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 #ROS Mesh adapter
 #Listen on a topic - when we get a message, prepare a MeshData message for transmission
 
@@ -17,13 +17,13 @@ import rospy
 import sys, logging, os
 from optparse import OptionParser
 
-import StringIO
+from io import StringIO
 import io
 import pdb
 from udp_mesh.srv import *
 from udp_mesh.msg import *
 from enum import Enum
-from Queue import Queue
+from queue import Queue
 import base64
 from std_msgs.msg import *
 from std_srvs.srv import *

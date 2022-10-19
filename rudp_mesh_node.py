@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 #ROS RUDP Mesh Interface
 '''
 This is an adapter to take in MeshData messages and send them to their destinations over UDP
@@ -86,7 +86,7 @@ import struct
 import logging
 from errno import EINTR
 
-import StringIO
+from io import StringIO
 import io
 import pdb
 import time
@@ -94,7 +94,7 @@ from udp_mesh.srv import *
 from udp_mesh.msg import *
 
 from enum import Enum
-from Queue import Queue
+from queue import Queue
 import base64
 import struct
 
@@ -206,14 +206,14 @@ class RUDPMeshNode(object):
     def get_netmask(self, ifname):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         #SIOCGIFNETMASK
-        return socket.inet_ntoa(fcntl.ioctl(s.fileno(), 0x891b, struct.pack('256s',ifname))[20:24])
+        return socket.inet_ntoa(fcntl.ioctl(s.fileno(), 0x891b, struct.pack('256s',ifname.encode()))[20:24])
     
     def get_interface_ip(self,ifname):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         return socket.inet_ntoa(fcntl.ioctl(
                 s.fileno(),
                 0x8915,  # SIOCGIFADDR
-                struct.pack('256s', bytes(ifname[:15]))
+                struct.pack('256s', bytes(ifname[:15].encode()))
                 # Python 2.7: remove the second argument for the bytes call
             )[20:24])
 

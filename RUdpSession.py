@@ -19,8 +19,9 @@ import rospy
 from MessageTypes import *
 from MessageFragment import *
 from enum import Enum
-from Queue import Queue
-from StringIO import *
+from queue import Queue
+from io import StringIO
+from io import BytesIO
 from KeyHeap import *
 
 import base64
@@ -147,7 +148,7 @@ class RUdpSessionManager(object):
 
         #Serialize the message into a buffer:
         #Serialize the PriorityMeshData message for transmission:
-        buf = StringIO.StringIO()
+        buf = BytesIO()
         msg.serialize(buf)
         data = buf.getvalue()
         
