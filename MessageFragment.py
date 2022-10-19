@@ -56,7 +56,7 @@ class MessageFragment(object):
             self.fragTotal = contents[2]
             self.data = src[13:-1] #leftovers, not including the checksum
 
-            self.checksum = int(src[-1].encode('hex'),16)
+            self.checksum = src[-1]
 
             #The profiler says the checksum is a slow point...
             #actualChecksum = checksum256(src[0:-1])
@@ -90,7 +90,7 @@ class MessageFragment(object):
         self.seq = seq
         self.frag = frag
         self.fragTotal = fragTotal
-        self.data = ''
+        self.data = ''.encode()
 
     def encodeHost(self, hostname, ip):
         self.seq = 0
