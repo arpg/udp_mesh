@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # module for getting the lan ip address of the computer
 
 import os
@@ -12,14 +12,14 @@ if os.name != "nt":
         return socket.inet_ntoa(fcntl.ioctl(
                 s.fileno(),
                 0x8915,  # SIOCGIFADDR
-                struct.pack('256s', bytes(ifname[:15]))
+                struct.pack('256s', bytes(ifname[:15].encode()))
                 # Python 2.7: remove the second argument for the bytes call
             )[20:24])
 
 def get_lan_ip():
     ip = socket.gethostbyname(socket.gethostname())
     if ip.startswith("127.") and os.name != "nt":
-        interfaces = ["eth0","eth1","eth2","wlan0","wlan1","wifi0","ath0","ath1","ppp0"]
+        interfaces = ["tun0", "eth0","eth1","eth2","wlan0","wlan1","wifi0","ath0","ath1","ppp0"]
         for ifname in interfaces:
             try:
                 ip = get_interface_ip(ifname)
@@ -29,4 +29,4 @@ def get_lan_ip():
     return ip
 
 if __name__ == "__main__":
-	print get_lan_ip()
+	print(get_lan_ip())
