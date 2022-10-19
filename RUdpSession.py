@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 '''
 The RUdp I had been using was desingd for a 1->many distribution
 We don't do that - this recycles some ideas with an eye to 1-1 distribution

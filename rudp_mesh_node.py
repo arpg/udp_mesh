@@ -424,7 +424,7 @@ class RUDPMeshNode(object):
             self.addHostname(msg.hostname, msg.ip)
 
     def addHostname(self, host, mac):
-        self.sessionManager.addPeer(host, mac)
+        self.sessionManager.addPeer(host.decode(), mac.decode())
         
         msg = HostEntry()
         msg.header.stamp = rospy.Time.now()
