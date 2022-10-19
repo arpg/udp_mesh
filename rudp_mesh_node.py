@@ -231,6 +231,7 @@ class RUDPMeshNode(object):
         return ip
 
     def get_broadcast_addr(self):
+
         local_octets = self.socket_ip.split('.')
         mask_octets = self.socket_mask.split('.')
         
@@ -254,7 +255,7 @@ class RUDPMeshNode(object):
             else:
                 broadcastIP = '.'.join([broadcastIP, local_octets[i]])
                          
-        #broadcastIP = '255.255.255.255'
+        broadcastIP = '255.255.255.255'
         return broadcastIP
     
         
@@ -347,6 +348,7 @@ class RUDPMeshNode(object):
 
     def run(self):
         #Main loop of the node
+
         while not rospy.is_shutdown():
             #Command q is still necessary so that a socket is only ever touched by one thread, the main thread
             #ROS callbacks are on separate threads and will corrupt state eventually
@@ -426,8 +428,8 @@ class RUDPMeshNode(object):
         
         msg = HostEntry()
         msg.header.stamp = rospy.Time.now()
-        msg.host = host
-        msg.mac = mac
+        msg.host = host.decode()
+        msg.mac = mac.decode()
         self.hosts_pub.publish(msg)
         
     def onDataPresent(self, msg):
@@ -445,9 +447,11 @@ class RUDPMeshNode(object):
 import cProfile
 
 if __name__ == '__main__':
+    print("Starting RUdpMeshNode")
     try:
         client = RUDPMeshNode()
         #cProfile.run('client.run()')
         client.run()
     except rospy.ROSInterruptException:
+        print("ROS exception!")
         pass

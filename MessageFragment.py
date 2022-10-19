@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 import sys, logging, os, socket, time
 
@@ -40,13 +40,13 @@ class MessageFragment(object):
         
     def decode(self, src):
         #Peek the first byte out of the src to determine type
-       
+
         try:
-            self.msgType = MessageTypes(struct.unpack("<B", src[0])[0])
+            self.msgType = MessageTypes(struct.unpack("<B", src[0:1])[0])
         except ValueError:
-            rospy.loginfo('MessageFragment.decode: Unknown message type %d' % struct.unpack("B", src[0])[0])
+            rospy.loginfo('MessageFragment.decode: Unknown message type %d' % struct.unpack("<B", src[0:1])[0])
             #Throw error, otherwise report up the call stack....
-            raise Exception('Unknown message type %d' % struct.unpack("B", src[0])[0])
+            raise Exception('Unknown message type %d' % struct.unpack("<B", bytes(src)[0:1])[0])
  
         if (self.msgType == MessageTypes.PAYLOAD) or (self.msgType == MessageTypes.PAYLOAD_NOACK):
 
