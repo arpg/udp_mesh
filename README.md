@@ -1,8 +1,8 @@
-# UPP Mesh
+# UDP Mesh
 
 UDP Mesh is a ROS transport layer that implements reliable UDP transport using only unicast and broadcast UDP datagrams. The package is specifically designed to be used as an application layer on top of a mesh layer.
 
-UDP encapsulates messages from existing ROS nodes without performing serialization and deserialization for improved performance.
+UDP mesh encapsulates messages from existing ROS nodes without performing serialization and deserialization for improved performance.
 
 UDP mesh performs discovery using a periodic heartbeat which advertises the availability of a given node on the mesh. The heartbeat interval is controlled by the `mesh_heartbeat_interval` parameter (in seconds).
 
@@ -25,7 +25,7 @@ A lower number represents a higher priority.
 UDP Mesh was originally designed to run on ROS Melodic. The `python3` branch should work on Ros Noetic.
 
 ## Papers
-The following papers provide more details on UDP Mesh. If you find this work helpful or use any of this code please cite one or more of the following works:
+The following papers provide more details on UDP Mesh. If you find this work helpful or use any of this code, please cite one or more of the following works:
 
 **Heterogeneous Ground-Air Autonomous Vehicle Networking in Austere Environments: Practical Implementation of a Mesh Network in the DARPA Subterranean Challenge**
 
