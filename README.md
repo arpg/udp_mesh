@@ -15,7 +15,7 @@ topic_list: List of topics and priorities for udp mesh to transmit:
 
 Example Value:
 "[1|std_msgs/String|high_pri_topic,
-    4|std_msgs/Bool|low_pri_topic,
+	4|std_msgs/Bool|low_pri_topic,
 	8|sensor_msgs/CameraInfo|cam_info_topic,
 	8|sensor_msgs/Image|image_raw]"
 
